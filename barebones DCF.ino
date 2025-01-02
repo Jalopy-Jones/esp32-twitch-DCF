@@ -59,20 +59,16 @@ void obtainDeviceCodeFlowTokens() {
 
     Serial.println("Response: " + response);
 
-    // Process JSON response
-    DynamicJsonDocument jsonDoc(1024);
-    DeserializationError error = deserializeJson(jsonDoc, response);
-
-    if (error) {
-      Serial.println("JSON Parse Error: " + String(error.c_str()));
-    } else {
-      String deviceCode = jsonDoc["device_code"];
-      String userCode = jsonDoc["user_code"];
-      String verificationUri = jsonDoc["verification_uri"];
-      unsigned long expiresIn = jsonDoc["expires_in"];
-      unsigned long interval = jsonDoc["interval"];
-
-      Serial.println("Go to " + verificationUri + " and enter code: " + userCode);
+    // manually parse out the required info cuz json fails
+    // Locate "verification_uri"
+    int startIndex = response.lastIndexOf("verification_uri") + strlen("verification_uri") + 3;  // Adding dynamic offset
+    // Locate the start of the URL by finding the next quote
+    int endIndex = response.indexOf("\"", startIndex);
+    // Extracting the URL
+    String verificationUri = response.substring(startIndex, endIndex);
+    // Trim any unnecessary whitespace or characters
+    verificationUri.trim();
+    Serial.println("Verification URI: " + verificationUri);
     }
   } else {
     Serial.println("Connection failed.");
