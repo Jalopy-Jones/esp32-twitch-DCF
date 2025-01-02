@@ -84,7 +84,7 @@ void pollForDeviceVerification(String deviceCode) {
 
         // Stop polling as the user has successfully verified
         break;
-      } else if (response.indexOf("\"error\":\"authorization_pending\"") != -1) {
+      } else if (response.indexOf("authorization_pending") != -1) {
         // Authorization is still pending; wait and continue polling
         Serial.println("Authorization pending. Retrying...");
       } else {
