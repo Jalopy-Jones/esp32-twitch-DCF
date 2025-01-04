@@ -60,6 +60,7 @@ void refreshTokenFunction() {
 
   if (refreshToken.isEmpty()) {
     Serial.println("No refresh token available. Initiating device code flow...");
+    Serial.println("Please be patient this may take a minute...");
     obtainDeviceCodeFlowTokens();
     return;
   }
@@ -85,7 +86,7 @@ void refreshTokenFunction() {
     }
 
     // Debugging the full response
-    Serial.println("Response: " + response);
+    //Serial.println("Response: " + response);
 
     // Parse response for access_token and refresh_token
     if (response.indexOf("\"access_token\":") != -1) {
@@ -106,6 +107,7 @@ void refreshTokenFunction() {
       preferences.remove("refresh_token");
 
       Serial.println("Initiating device code flow...");
+      Serial.println("Please be patient this may take a minute...");
       obtainDeviceCodeFlowTokens();
     }
   } else {
@@ -122,6 +124,7 @@ void pollForDeviceVerification(String deviceCode) {
   int elapsedTime = 0;
 
   Serial.println("Polling for device verification...");
+  Serial.println("Please be patient this may take a minute...");
 
   while (elapsedTime < maxPollingTime) {
     if (client.connect(server, 443)) {
@@ -257,9 +260,11 @@ void setup() {
 
   if (accessToken.isEmpty() || refreshToken.isEmpty()) {
     Serial.println("No stored tokens found. Initiating device code flow...");
+    Serial.println("Please be patient this may take a minute...");
     obtainDeviceCodeFlowTokens();
   } else {
     Serial.println("Stored tokens found. Checking validity...");
+    Serial.println("Please be patient this may take a minute...");
     refreshTokenFunction();  // Attempt to refresh on startup
   }
 
