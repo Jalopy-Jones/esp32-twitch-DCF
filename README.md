@@ -17,6 +17,9 @@
  "barebones DCF.ino"
  - This code is designed based on Twich's Device Code Flow Using An ESP32 : 
  - This program is designed to obtain and refresh tokens after initial setup and verification.
+ - This code DOES NOT connect to Twitch IRC. This is just the framework for using
+Twitch's Device Code Flow to obtain an initial token, and automatically refresh the
+token after validation/authorization.
 
 
   
