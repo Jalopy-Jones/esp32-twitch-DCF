@@ -24,6 +24,5 @@
  "ESP32 Twitch IRC Chatbot Framework.ino" in conjunction with "credentials.h"
  - This code is designed based on Twich's Device Code Flow Using An ESP32 : 
  - This program is designed to obtain and refresh tokens after initial setup and verification.
- - Setup initial permissions
- - Auto obtain new Access and Refresh tokens automagically
- - Connects to Twitch IRC for chatbot functionality
+ - This code connects to Twitch IRC for chatbot functionality.
+
