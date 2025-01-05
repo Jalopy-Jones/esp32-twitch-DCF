@@ -1,14 +1,21 @@
 /*
-- This code gets a Verification URI
+- barebones DCF.ino gets a Verification URI
 - The user goes to an external device (ie. the pc the esp32 is connected to)
 and enter the login and give permissions for the bot to connect to twitch.
 - The Access and Refresh Tokens obtained are stored in preferences
 - The program polls to see if the stored tokens are valid, if not, refreshes them.
+   
+    Copyright (C) 2025  Jalopy Jones
 
-TODO:
-add in preset reset (erase preferences: "do you want to use existing network config? Y/n")
-add in credentials prompt
-add in bot functionality
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
 */
 
 #include <WiFi.h>
